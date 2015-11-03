@@ -1,18 +1,21 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int main()
 {
     char input[64];
-    int ch;
-    int x=0;
+    char ch;
+    int x = 0;
 
-    printf("Type in all caps: ");
+    printf("Type in some text: ");
     fgets(input,63,stdin);
 
     while(input[x] != '\n')
     {
-
-        ch=input[x]|32;
+        if(isalpha(input[x]))
+            ch = input[x] & 223;
+        else
+            ch = input[x];
         putchar(ch);
         x++;
     }
